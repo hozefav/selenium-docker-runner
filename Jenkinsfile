@@ -13,10 +13,11 @@ pipeline {
                 bat "docker-compose up search-module book-flight-module"
             }
         }
-        stage('Bring grid down') {
+        stage('Stopping selenium grid') {
             steps {
                 //sh
                 bat "docker-compose down"
             }
         }
    }
+}
