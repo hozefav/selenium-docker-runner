@@ -2,6 +2,12 @@ pipeline {
     // master executor should be set to 0
     agent any
     stages {
+        stage('Pull the latest image from hub') {
+            steps {
+                //sh
+                bat "docker pull hozefavakanerwala/selenium-docker"
+            }
+        }
         stage('Starting selenium grid') {
             steps {
                 //sh
