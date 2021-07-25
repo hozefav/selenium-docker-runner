@@ -5,25 +5,25 @@ pipeline {
         stage('Pull the latest image from hub') {
             steps {
                 //sh
-                sh "docker pull hozefavakanerwala/selenium-docker"
+                bat "docker pull hozefavakanerwala/selenium-docker"
             }
         }
         stage('Starting selenium grid') {
             steps {
                 //sh
-                sh "docker-compose up -d hub chrome firefox"
+                bat "docker-compose up -d hub chrome firefox"
             }
         }
         stage('Run Test'){
             steps {
-                sh "docker-compose up search-module book-flight-module"
+                bat "docker-compose up search-module book-flight-module"
             }
         }
     }
    post{
         always{
-            archiveArtifacts artifacts: 'outputs/**'
-            sh "docker-compose down"
+            archiveArtifacts artifacts: 'output/**'
+            bat "docker-compose down"
         }
    }
 }
